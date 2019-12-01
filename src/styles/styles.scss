@@ -1,0 +1,58 @@
+@import 'colors';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Titillium Web", sans-serif;
+  background-color: $ghostWhite;
+}
+
+.btn {
+  font-size: 1rem;
+  min-width: 20%;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+  color: $white;
+}
+.btn-small {
+  min-width: 10%;
+}
+.btn-blue {
+  background: $blue;
+}
+.btn-blue:hover {
+  background: $darkBlue;
+}
+.btn-green {
+  background: $green;
+}
+.btn-green:hover {
+  background: $darkGreen;
+}
+.btn-red {
+  background: $red;
+}
+.btn-red:hover {
+  background: $darkRed;
+}
+.btn-yellow {
+  background: $yellow;
+}
+.btn-yellow:hover {
+  background: $darkYellow;
+}
+.btn-yellow {
+  background: $yellow;
+}
+.btn-yellow:hover {
+  background: $darkYellow;
+}
