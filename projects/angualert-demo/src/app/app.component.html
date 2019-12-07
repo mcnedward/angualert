@@ -1,0 +1,74 @@
+<header>
+  <h1 class="alert-header">Angualert</h1>
+  <h2 class="alert-header">A service for popping alerts in an Angular app</h2>
+</header>
+
+<main>
+  <angualert-box></angualert-box>
+
+  <div class="alert-textbox">
+    <div>
+      <textarea placeholder="Enter your alert text here!" [(ngModel)]="alertText" #ctrl="ngModel" [maxlength]="alertMaxLength" rows="3" cols="50" required></textarea>
+      <div class="small">{{alertLength()}} / {{alertMaxLength}}</div>
+    </div>
+  </div>
+
+  <div class="alert-buttons-container">
+    <button class="btn btn-blue" (click)="showInfo()">
+      <i class="fa fa-info" aria-hidden="true"></i> INFO!
+    </button>
+    <button class="btn btn-green" (click)="showSuccess()">
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i> SUCCESS!
+    </button>
+  </div>
+  <div class="alert-buttons-container">
+    <button class="btn btn-yellow" (click)="showWarn()">
+      <i class="fa fa-exclamation" aria-hidden="true"></i> WARN!
+    </button>
+    <button class="btn btn-red" (click)="showError()">
+      <i class="fa fa-times" aria-hidden="true"></i> ERROR!
+    </button>
+  </div>
+
+  <div *ngIf="options != null" class="alert-options">
+    <div>
+      <h3>Alert Box Position</h3>
+      <div class="alert-radio-container">
+        <label class="alert-radio">
+          <input type="radio" [(ngModel)]="options.location" name="left" value="left">
+          <span>Left</span>
+        </label>
+        <label class="alert-radio">
+          <input type="radio" [(ngModel)]="options.location" name="center" value="center">
+          <span>Center</span>
+        </label>
+        <label class="alert-radio">
+          <input type="radio" [(ngModel)]="options.location" name="right" value="right">
+          <span>Right</span>
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <h3>Auto Close Alerts</h3>
+      <label class="alert-checkbox">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="options.autoClose">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Use Auto Close for Alerts?</span>
+      </label>
+
+      <div>
+        <label style="margin-right: 1rem">Timeout for auto close</label>
+        <input type="number" placeholder="Time" class="d-inline text-right" style="width:70px;" [(ngModel)]="options.autoCloseTimeout" min="1" required />
+        <label>(ms)</label>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span><a href="https://github.com/mcnedward/angualert"><img src="../assets/github.png" alt="Github" /></a></span>
+  <span><a href="https://www.linkedin.com/in/mcnedward"><img src="../assets/linkedin.png" alt="LinkedIn" /></a></span>
+  <label><a href="https://edwardmcnealy.com">&copy; Edward McNealy {{copyrightDate}}</a></label>
+</footer>

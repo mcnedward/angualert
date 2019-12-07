@@ -1,0 +1,114 @@
+@import "colors";
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Titillium Web", sans-serif;
+  background-color: $white;
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header, footer {
+  flex: none;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: var(--space) var(--space) 0;
+  width: 100%;
+}
+main::after {
+  content: '\00a0'; /* &nbsp; */
+  display: block;
+  margin-top: var(--space);
+  height: 0px;
+  visibility: hidden;
+}
+@media (--break-lg) {
+  main {
+    padding-top: var(--space-lg);
+  }
+  main::after {
+    margin-top: var(--space-lg);
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $red;
+  padding-top: 0.5rem;
+
+  span {
+    margin-right: 0.5rem;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+  a:hover {
+    opacity: 0.5;
+  }
+
+  img {
+    width: 32px;
+  }
+}
+
+.btn {
+  min-width: 20%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+  color: $white;
+}
+.btn-blue {
+  background: $blue;
+}
+.btn-blue:hover {
+  background: $darkBlue;
+}
+.btn-green {
+  background: $green;
+}
+.btn-green:hover {
+  background: $darkGreen;
+}
+.btn-red {
+  background: $red;
+}
+.btn-red:hover {
+  background: $darkRed;
+}
+.btn-yellow {
+  background: $yellow;
+}
+.btn-yellow:hover {
+  background: $darkYellow;
+}
+.btn-yellow {
+  background: $yellow;
+}
+.btn-yellow:hover {
+  background: $darkYellow;
+}

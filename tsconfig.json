@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angualert": [
+        "dist/angualert"
+      ],
+      "angualert/*": [
+        "dist/angualert/*"
+      ]
+    }
   }
 }

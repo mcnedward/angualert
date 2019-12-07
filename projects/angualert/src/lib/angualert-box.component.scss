@@ -1,0 +1,17 @@
+#alertContainer {
+  position: fixed;
+  top: 10px;
+  max-width: 45%;
+  min-width: 20%;
+  z-index: 1032;
+}
+.alert-right {
+  right: 5px;
+}
+.alert-left {
+  left: 5px;
+}
+.alert-center {
+  left: 50%;
+  transform: translateX(-50%);
+}

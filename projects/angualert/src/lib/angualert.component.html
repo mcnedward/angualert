@@ -1,0 +1,14 @@
+<div [ngClass]="'text-' + location">
+  <div class="alert" [ngClass]="['alert-' + alertType]" role="alert" id="alert" [@enterLeave]="alertState" *ngIf="visible" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+
+    <div class="alert-progress-container" (click)="close()">
+      <div class="alert-progress" [style.width.%]="progress"></div>
+      <span>{{alertMessage}}</span>
+    </div>
+
+    <div *ngIf="alertConfirmed != null">
+      <span class="btn btn-blue" (click)="confirm(true)">Yes</span>
+      <span class="btn btn-yellow" (click)="confirm(false)">No</span>
+    </div>
+  </div>
+</div>

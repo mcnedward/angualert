@@ -1,0 +1,68 @@
+#alertDemo {
+  max-width: 900px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.alert-header {
+  text-align: center;
+}
+
+.alert-textbox {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+textarea, input[type=number] {
+  padding: 10px 0 5px;
+  font-size: 14px;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #51b641;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background-position: 0 0;
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  background: linear-gradient(180deg,hsla(0,0%,100%,0) 98%,#51b641 0);
+  color: #000;
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.alert-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  .btn {
+    margin-right: 0.5rem;
+  }
+}
+
+.alert-options {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.alert-radio-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.alert-radio, .alert-checkbox {
+  label, span {
+    font-size: 1.2rem;
+  }
+
+  input {
+    width: 15px;
+    height: 15px;
+  }
+}
+.alert-radio {
+  margin-right: 1rem;
+}

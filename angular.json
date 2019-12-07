@@ -4,30 +4,61 @@
   "newProjectRoot": "projects",
   "projects": {
     "angualert": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/angualert",
+      "sourceRoot": "projects/angualert/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angualert/tsconfig.lib.json",
+            "project": "projects/angualert/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angualert/src/test.ts",
+            "tsConfig": "projects/angualert/tsconfig.spec.json",
+            "karmaConfig": "projects/angualert/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angualert/tsconfig.lib.json",
+              "projects/angualert/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "angualert-demo": {
+      "root": "projects/angualert-demo/",
+      "sourceRoot": "projects/angualert-demo/src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angualert",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/angualert-demo",
+            "index": "projects/angualert-demo/src/index.html",
+            "main": "projects/angualert-demo/src/main.ts",
+            "polyfills": "projects/angualert-demo/src/polyfills.ts",
+            "tsConfig": "projects/angualert-demo/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/angualert-demo/src/favicon.ico",
+              "projects/angualert-demo/src/assets"
             ],
             "styles": [
-              "src/styles/styles.scss"
+              "projects/angualert-demo/src/styles/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -36,8 +67,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/angualert-demo/src/environments/environment.ts",
+                  "with": "projects/angualert-demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,34 +93,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angualert:build"
+            "browserTarget": "angualert-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angualert:build:production"
+              "browserTarget": "angualert-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angualert:build"
+            "browserTarget": "angualert-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "projects/angualert-demo/src/test.ts",
+            "polyfills": "projects/angualert-demo/src/polyfills.ts",
+            "tsConfig": "projects/angualert-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/angualert-demo/karma.conf.js",
             "styles": [
-              "src/styles/styles.scss"
+              "projects/angualert-demo/src/styles/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/angualert-demo/src/favicon.ico",
+              "projects/angualert-demo/src/assets"
             ]
           }
         },
@@ -97,8 +128,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/angualert-demo/tsconfig.app.json",
+              "projects/angualert-demo/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -107,27 +138,27 @@
         }
       }
     },
-    "angualert-e2e": {
-      "root": "e2e/",
+    "angualert-demo-e2e": {
+      "root": "projects/angualert-demo-e2e/",
       "projectType": "application",
       "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angualert:serve"
+            "protractorConfig": "projects/angualert-demo-e2e/protractor.conf.js",
+            "devServerTarget": "angualert-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angualert:serve:production"
+              "devServerTarget": "angualert-demo:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/angualert-demo-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
