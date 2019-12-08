@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 import { AngualertService, AlertOptions } from 'angualert';
 
@@ -27,6 +27,19 @@ export class AppComponent {
   }
   public showError() {
     this.alertService.error(this.alertText, this.options);
+  }
+
+  public showConfirm() {
+    const e = new EventEmitter<boolean>();
+    e.subscribe(v => {
+      const wasConfirmed = v ? 'Yes' : 'No';
+      this.alertService.success('Was alert confirmed? ' + wasConfirmed);
+    });
+    const options = new AlertOptions();
+    options.alertConfirmed = e;
+    options.adHost = this.options.adHost;
+
+    this.alertService.info(this.alertText, options);
   }
 
   alertLength(): number {

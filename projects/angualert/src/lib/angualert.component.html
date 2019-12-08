@@ -3,12 +3,16 @@
 
     <div class="alert-progress-container" (click)="close()">
       <div class="alert-progress" [style.width.%]="progress"></div>
-      <span>{{alertMessage}}</span>
+
+      <div>
+        <span>{{alertMessage}}</span>
+
+        <div class="btn-container" *ngIf="alertConfirmed != null">
+          <span class="btn btn-yes" (click)="confirm(true)">Yes</span>
+          <span class="btn btn-no" (click)="confirm(false)">No</span>
+        </div>
+      </div>
     </div>
 
-    <div *ngIf="alertConfirmed != null">
-      <span class="btn btn-blue" (click)="confirm(true)">Yes</span>
-      <span class="btn btn-yellow" (click)="confirm(false)">No</span>
-    </div>
   </div>
 </div>
