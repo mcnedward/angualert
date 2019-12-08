@@ -11,6 +11,7 @@ export class AppComponent {
   public alertText: string = `Whatever you type here will show up in the alert. Give it a try! Then hit one of the buttons below to pop the alert.`;
   public alertMaxLength: number = 500;
   public options: AlertOptions;
+  public copyrightDate: number = new Date().getFullYear();
 
   constructor(private alertService: AngualertService) {
     this.options = new AlertOptions();
