@@ -46,11 +46,14 @@ textarea, input[type=number] {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  flex-wrap: wrap;
+  margin: 2rem 0 4rem 0;
 }
 
 .alert-radio-container {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 2rem;
 }
 
 .alert-radio, .alert-checkbox {
