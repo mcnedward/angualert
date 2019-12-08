@@ -1,11 +1,14 @@
 {
   "name": "angualert",
-  "version": "0.0.0",
+  "description": "A service for popping alerts in an Angular app",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-lib": "ng build --project=angualert --watch=true",
+    "build-lib": "ng build --project=angualert",
+    "build-lib-watch": "ng build --project=angualert --watch=true",
+    "publish": "npm run build-lib && cd dist/angualert && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -49,5 +52,10 @@
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
+  },
+  "author": "Edward McNealy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcnedward/angualert"
   }
 }

@@ -1,27 +1,92 @@
 # Angualert
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+A service for popping alerts in an Angular app.
 
-## Development server
+## Using
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm install angualert`
 
-## Code scaffolding
+Add the following to your `AppModule`:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```js
+import { AngualertModule } from 'angualert';
 
-## Build
+@NgModule({
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    AngualertModule
+  ],
+  providers: [],
+  bootstrap: [
+    // ...
+  ]
+})
+export class AppModule { }
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+You can then inject the `AngualertService` and use it to start showing alerts.
 
-## Running unit tests
+```js
+import { AngualertService, AlertOptions } from 'angualert';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+export class AppComponent {
 
-## Running end-to-end tests
+  constructor(private angualertService: AngualertService) {
+  }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  showInfo() {
+    this.angualertService.info('This is an info level message!');
+  }
 
-## Further help
+  showError() {
+    this.angualertService.error('This is an error level message...');
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  showSuccessWithOptions() {
+    const options = new AlertOptions();
+    options.location  = 'center';
+    options.autoCloseTimeout = 10000;
+    this.angualertService.info('This is an alert centered and auto-closing in 10 seconds!', options);
+  }
+
+  showWithConfirm() {
+    const e = new EventEmitter<boolean>();
+    e.subscribe(v => {
+      const wasConfirmed = v ? 'Yes' : 'No';
+      this.alertService.success('Was alert confirmed? ' + wasConfirmed);
+    });
+    const options = new AlertOptions();
+    options.alertConfirmed = e;
+
+    this.angualertService.info('This is an alert with 2 confirmation buttons!', options);
+  }
+
+}
+```
+
+## Alert Types
+
+### Info
+`this.angualertService.info('This is blue info');`
+
+### Success
+`this.angualertService.success('This is green success');`
+
+### Warn
+`this.angualertService.warn('This is yellow warning');`
+
+### Error
+`this.angualertService.error('This is red error');`
+
+## Alert Options
+
+### Location
+| Option | Values | Description |
+| ------ | ------ | ----------- |
+| location | string: left \| right \| center | Position for where the alerts will be shown |
+| autoClose | boolean | True if the alerts should close automatically, false if they should only be closed on click |
+| autoCloseTimeout | number | The time in milliseconds until an alert is auto-closed |
+| alertConfirmed | EventEmitter<boolean> | An event emitter that will receive a boolean value determining if the alert was confirmed or not |
