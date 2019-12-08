@@ -2,7 +2,11 @@
 
 A service for popping alerts in an Angular app.
 
-## Using
+## Demo
+
+[View the demo](https://angualert.edwardmcnealy.com/)
+
+## Using in your app
 
 `npm install angualert`
 
