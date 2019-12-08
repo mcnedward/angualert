@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --project=angualert-demo",
+    "build-prod": "ng build --project=angualert-demo --prod",
     "build-lib": "ng build --project=angualert",
     "build-lib-watch": "ng build --project=angualert --watch=true",
     "publish": "npm run build-lib && cd dist/angualert && npm publish",
