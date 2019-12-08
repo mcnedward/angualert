@@ -20,6 +20,10 @@ header, footer {
   flex: none;
 }
 
+header {
+  border: 1px solid #f2efef
+}
+
 main {
   flex: 1 0 auto;
   padding: var(--space) var(--space) 0;
