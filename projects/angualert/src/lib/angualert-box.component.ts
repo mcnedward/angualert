@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, Output, AfterViewInit, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, Input, Output, OnInit, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 import { AngualertService } from './angualert.service';
 import { AdDirective } from './ad.directive';
@@ -17,7 +17,7 @@ import { AlertOptions } from './alert-options';
   </div>`,
   styleUrls: ['./angualert-box.component.scss']
 })
-export class AngualertBoxComponent implements AfterViewInit {
+export class AngualertBoxComponent implements OnInit {
   @ViewChild(AdDirective) adHost: AdDirective;
   @Input() location: string;
   @Input() autoClose: boolean;
@@ -29,7 +29,7 @@ export class AngualertBoxComponent implements AfterViewInit {
     angualertService.locationChanged$.subscribe(location => this.location = location);
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     // Get any options defined in directive html
     let options = {
       adHost: this.adHost,

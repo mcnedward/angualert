@@ -3,6 +3,7 @@ import { SubscriptionLike } from 'rxjs';
 
 import { AngualertComponent } from './angualert.component';
 import { AlertOptions } from './alert-options';
+import { AdDirective } from './ad.directive';
 
 /**
  * A service for showing alerts. Inject this into a component constructor, then use it when you want to show an alert.
@@ -30,7 +31,10 @@ export class AngualertService implements OnDestroy {
    * @param options The options. Can be ignored
    */
   public info(message: string, options?: AlertOptions | any) {
-    let alert = this.loadAlert();
+    const adHost = this.getAdHost();
+    if (adHost == null) return null;
+
+    let alert = this.loadAlert(adHost);
     options = this.getOptions(options);
     alert.info(message, options);
     return alert;
@@ -42,7 +46,10 @@ export class AngualertService implements OnDestroy {
    * @param options The options. Can be ignored
    */
   public success(message: string, options?: AlertOptions | any): AngualertComponent {
-    let alert = this.loadAlert();
+    const adHost = this.getAdHost();
+    if (adHost == null) return null;
+
+    let alert = this.loadAlert(adHost);
     options = this.getOptions(options);
     alert.success(message, options);
     return alert;
@@ -54,7 +61,10 @@ export class AngualertService implements OnDestroy {
    * @param options The options. Can be ignored
    */
   public warn(message: string, options?: AlertOptions | any): AngualertComponent {
-    let alert = this.loadAlert();
+    const adHost = this.getAdHost();
+    if (adHost == null) return null;
+
+    let alert = this.loadAlert(adHost);
     options = this.getOptions(options);
     alert.warn(message, options);
     return alert;
@@ -66,7 +76,10 @@ export class AngualertService implements OnDestroy {
    * @param options The options. Can be ignored
    */
   public error(message: string, options?: AlertOptions | any): AngualertComponent {
-    let alert = this.loadAlert();
+    const adHost = this.getAdHost();
+    if (adHost == null) return null;
+
+    let alert = this.loadAlert(adHost);
     options = this.getOptions(options);
     alert.error(message, options);
     return alert;
@@ -92,10 +105,18 @@ export class AngualertService implements OnDestroy {
     return options;
   }
 
-  public loadAlert(): AngualertComponent {
+  private getAdHost(): AdDirective {
+    if (this.options == null || this.options.adHost == null) {
+      console.error('You cannot show alerts until the view has rendered. Place AngualertService calls inside either ngAfterViewInit, or wait until the view has fully rendered.');
+      return null;
+    }
+    return this.options.adHost;
+  }
+
+  private loadAlert(adHost: AdDirective): AngualertComponent {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(AngualertComponent);
 
-    let viewContainerRef = this.options.adHost.viewContainerRef;
+    let viewContainerRef = adHost.viewContainerRef;
     let componentRef = viewContainerRef.createComponent(componentFactory);
 
     let alert = (<AngualertComponent>componentRef.instance);
