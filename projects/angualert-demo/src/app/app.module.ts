@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
     AngualertModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  // entryComponents: [AngualertComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
